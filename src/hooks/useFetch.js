@@ -13,7 +13,7 @@ const useFetch = (url) => {
   const doFetch = useCallback((options) => {
     setOptions(options);
     setIsLoading(true);
-  }, [])
+  }, []);
   useEffect(() => {
     const requestOptions = {
       ...options,
@@ -27,7 +27,7 @@ const useFetch = (url) => {
     if (!isLoading) {
       return;
     }
-
+    console.log(urlApi + url);
     axios(urlApi + url, requestOptions)
       .then((res) => {
         setResponse(res.data);

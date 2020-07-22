@@ -8,9 +8,9 @@ import Errors from "../../errors";
 import PopularTags from "../popularTags/popularTags";
 import FeedToggler from "../feedToggler/feedToggler";
 
-const GlobalFeed = ({ location, match }) => {
+const YourFeed = ({ location, match }) => {
   const { currentPage, offset } = getPaginator(location.search);
-  const apiUrl = `/articles?limit=${limit}&offset=${offset}`;
+  const apiUrl = `/articles/feed?limit=${limit}&offset=${offset}`;
   const [{ response, isLoading, error }, doFetch] = useFetch(apiUrl);
   const url = match.url;
   console.log(url);
@@ -52,4 +52,4 @@ const GlobalFeed = ({ location, match }) => {
     </div>
   );
 };
-export default GlobalFeed;
+export default YourFeed;

@@ -8,15 +8,16 @@ import Errors from "../../errors";
 import PopularTags from "../popularTags/popularTags";
 import FeedToggler from "../feedToggler/feedToggler";
 
-const GlobalFeed = ({ location, match }) => {
+const TegFeed = ({ location, match }) => {
+  const tagName = match.params.slug;
   const { currentPage, offset } = getPaginator(location.search);
-  const apiUrl = `/articles?limit=${limit}&offset=${offset}`;
+  const apiUrl = `/articles?limit=${limit}&offset=${offset}&tag=${tagName}`;
   const [{ response, isLoading, error }, doFetch] = useFetch(apiUrl);
   const url = match.url;
-  console.log(url);
+
   useEffect(() => {
     doFetch();
-  }, [doFetch, currentPage]);
+  }, [doFetch, currentPage, apiUrl]);
   error && console.log("response", error);
   return (
     <div className="home-page">
@@ -29,7 +30,7 @@ const GlobalFeed = ({ location, match }) => {
       <div className="container page">
         <div className="row">
           <div className="col-md-9">
-            <FeedToggler />
+            <FeedToggler tagName={tagName} />
             {isLoading && <Loading />}
             {error && <Errors />}
             {!isLoading && response && (
@@ -52,4 +53,4 @@ const GlobalFeed = ({ location, match }) => {
     </div>
   );
 };
-export default GlobalFeed;
+export default TegFeed;
