@@ -13,7 +13,7 @@ const GlobalFeed = ({ location, match }) => {
   const apiUrl = `/articles?limit=${limit}&offset=${offset}`;
   const [{ response, isLoading, error }, doFetch] = useFetch(apiUrl);
   const url = match.url;
-  console.log(url);
+
   useEffect(() => {
     doFetch();
   }, [doFetch, currentPage]);
