@@ -1,15 +1,13 @@
-import React, { useContext, Fragment } from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import { CurrentUserContext } from '../../../contexts/currentUserContext'
-
-
+import React, { useContext, Fragment } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { CurrentUserContext } from "../../../contexts/currentUserContext";
 
 const TopBar = () => {
+  const [currentUserState, dispatch] = useContext(CurrentUserContext);
 
-  const [currentUserState] = useContext(CurrentUserContext)
   const userImage =
     (currentUserState.isLoggedIn && currentUserState.currentUser.image) ||
-    'https://static.productionready.io/images/smiley-cyrus.jpg'
+    "https://static.productionready.io/images/smiley-cyrus.jpg";
 
   return (
     <nav className="navbar navbar-light">
@@ -65,7 +63,7 @@ const TopBar = () => {
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
 
 export default TopBar;

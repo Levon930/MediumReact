@@ -5,11 +5,13 @@ import Article from "./pages/article";
 import Authentication from "./pages/authentication";
 import TegFeed from "./pages/TagFeed";
 import YourFeed from "./pages/yourFeed";
+import NewPost from "./pages/newPost/newPost";
 
 const Routs = () => {
   return (
     <Switch>
       <Route path="/" component={GlobalFeed} exact />
+      <Route path="/articles/new" component={NewPost} />
       <Route path="/feed" component={YourFeed} exact />
       <Route path="/tags/:slug" component={TegFeed} />
       <Route path="/login" component={Authentication} />
